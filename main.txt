@@ -1,0 +1,110 @@
+#include <iostream>
+#include <cmath>
+
+using namespace std;
+
+const double PI = 3.1416;
+
+double soma(double a, double b) {
+    return a + b;
+}
+
+double subtracao(double a, double b) {
+    return a - b;
+}
+
+double multiplicacao(double a, double b) {
+    return a * b;
+}
+
+double divisao(double a, double b) {
+    if (b != 0) {
+        return a / b;
+    } else {
+        cout << "Erro: Divisão por zero não permitida.\n";
+        return 0;
+    }
+}
+
+double calcularAreaRetangulo(double base, double altura) {
+    return base * altura;
+}
+
+double calcularAreaTriangulo(double base, double altura) {
+    return (base * altura) / 2;
+}
+
+double calcularAreaTrapezio(double baseMaior, double baseMenor, double altura) {
+    return ((baseMaior + baseMenor) * altura) / 2;
+}
+
+double calcularAreaCirculo(double raio) {
+    return PI * pow(raio, 2);
+}
+
+int main() {
+    int opcao;
+    double num1, num2, resultado;
+    double base, altura, raio, baseMaior;
+
+    cout << "----------[ CALCULADORA DE ÁREA - MENU DE AÇÕES ]----------\n";
+    cout << "1. ADIÇÃO (+)\n";
+    cout << "2. SUBTRAÇÃO (-)\n";
+    cout << "3. MULTIPLICAÇÃO (*)\n";
+    cout << "4. DIVISÃO (/)\n";
+    cout << "5. RETÂNGULO\n";
+    cout << "6. TRIÂNGULO\n";
+    cout << "7. TRAPÉZIO\n";
+    cout << "8. CÍRCULO\n";
+    cout << "Escolha uma opção: ";
+    cin >> opcao;
+
+    if (opcao >= 1 && opcao <= 4) {
+        cout << "Digite o primeiro número: ";
+        cin >> num1;
+        cout << "Digite o segundo número: ";
+        cin >> num2;
+
+        switch (opcao) {
+            case 1: resultado = soma(num1, num2); break;
+            case 2: resultado = subtracao(num1, num2); break;
+            case 3: resultado = multiplicacao(num1, num2); break;
+            case 4: resultado = divisao(num1, num2); break;
+        }
+
+        cout << "Resultado: " << resultado << endl;
+
+    } else if (opcao == 5) {
+        cout << "Digite a base do retângulo: ";
+        cin >> base;
+        cout << "Digite a altura do retângulo: ";
+        cin >> altura;
+        cout << "Área do retângulo: " << calcularAreaRetangulo(base, altura) << endl;
+
+    } else if (opcao == 6) {
+        cout << "Digite a base do triângulo: ";
+        cin >> base;
+        cout << "Digite a altura do triângulo: ";
+        cin >> altura;
+        cout << "Área do triângulo: " << calcularAreaTriangulo(base, altura) << endl;
+
+    } else if (opcao == 7) {
+        cout << "Digite a base maior do trapézio: ";
+        cin >> baseMaior;
+        cout << "Digite a base menor do trapézio: ";
+        cin >> base;
+        cout << "Digite a altura do trapézio: ";
+        cin >> altura;
+        cout << "Área do trapézio: " << calcularAreaTrapezio(baseMaior, base, altura) << endl;
+
+    } else if (opcao == 8) {
+        cout << "Digite o raio do círculo: ";
+        cin >> raio;
+        cout << "Área do círculo: " << calcularAreaCirculo(raio) << endl;
+
+    } else {
+        cout << "Opção inválida.\n";
+    }
+
+    return 0;
+}
